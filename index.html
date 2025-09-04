@@ -37,20 +37,13 @@
       <label>Comentario adicional:</label>
       <textarea id="comentario" rows="3" placeholder="Escribe aquí comentarios adicionales"></textarea>
 
-      <!-- Enlace directo a WhatsApp -->
+      <!-- Botón que abre WhatsApp -->
       <a id="whatsappBtn" href="#" target="_blank" class="button-link">Enviar a WhatsApp</a>
-      <!-- Botón independiente para enviar correo -->
-      <button type="button" id="emailBtn">Enviar copia por correo</button>
     </form>
   </div>
 
-  <!-- Script EmailJS -->
-  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
   <script>
-    emailjs.init("C5j47qKA17BwP7LyR"); // Public Key
-
     const whatsappBtn = document.getElementById("whatsappBtn");
-    const emailBtn = document.getElementById("emailBtn");
 
     whatsappBtn.addEventListener("click", function(e) {
       const nombre = document.getElementById("nombre").value;
@@ -64,34 +57,12 @@
         return;
       }
 
-      const numero = "522221208061"; // México +52
+      // Número de WhatsApp (México +52)
+      const numero = "522221208061";
       const mensaje = `SOPORTE TI UPAEP\n\nNombre: ${nombre}\nFalla: ${falla}\nÁrea: ${area}\nComentario: ${comentario}`;
+
+      // Generar enlace de WhatsApp
       whatsappBtn.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    });
-
-    emailBtn.addEventListener("click", function() {
-      const nombre = document.getElementById("nombre").value;
-      const falla = document.getElementById("falla").value;
-      const area = document.getElementById("area").value;
-      const comentario = document.getElementById("comentario").value;
-
-      if (!nombre || !falla || !area) {
-        alert("Por favor completa todos los campos obligatorios.");
-        return;
-      }
-
-      emailjs.send("service_85tg48p", "template_jx2nt6o", {
-        nombre: nombre,
-        falla: falla,
-        area: area,
-        comentario: comentario,
-        to_email: "diana.velazquez@christus.mx"
-      }).then(function(response){
-        alert("Correo enviado con éxito!");
-      }, function(error){
-        alert("Error al enviar correo. Ver consola.");
-        console.log(error);
-      });
     });
   </script>
 </body>

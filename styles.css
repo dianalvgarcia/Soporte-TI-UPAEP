@@ -15,7 +15,7 @@ body {
   box-shadow: 0 4px 15px rgba(0,0,0,0.15);
 }
 
-input, select, textarea, button, a.button-link {
+input, select, textarea, a.button-link {
   width: 100%;
   padding: 10px;
   margin: 5px 0;
@@ -24,25 +24,15 @@ input, select, textarea, button, a.button-link {
   box-sizing: border-box;
 }
 
-button {
-  background-color: #5b2e91;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-button:hover {
-  background-color: #4a148c;
-}
-
 a.button-link {
-  display: inline-block;
+  display: block;
   text-align: center;
   background-color: #5b2e91;
   color: white;
   font-weight: bold;
   text-decoration: none;
+  padding: 10px;
+  border-radius: 8px;
 }
 
 a.button-link:hover {
