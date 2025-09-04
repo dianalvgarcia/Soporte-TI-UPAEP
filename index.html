@@ -8,16 +8,26 @@
 </head>
 <body>
   <div class="container">
-    <h2>📌 SOPORTE TI PUEBLA</h2>
-    <p>¿En qué te podemos apoyar hoy? Llena la siguiente información:</p>
+    <!-- Logo Hospital UPAEP -->
+    <img src="logo upaep.png" alt="Hospital UPAEP Logo">
+
+    <h2>💻SOPORTE TI PUEBLA</h2>
+    <p>¿En qué te podemos apoyar hoy? Llena la información a continuación:</p>
 
     <form id="soporteForm">
-      <label>Nombre del usuario / Usuario de red:</label>
-      <input type="text" id="nombre" required placeholder="Ingresa tu nombre">
+      <input type="text" id="nombre" placeholder="Nombre del usuario / Usuario de red" required>
+      <input type="text" id="extension" placeholder="No. de Extensión del área">
 
-      <label>Área que reporta:</label>
+      <select id="falla" required>
+        <option value="">-- Falla / Duda --</option>
+        <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
+        <option value="Error en sistema">Error en sistema</option>
+        <option value="Problema con red">Problema con red</option>
+        <option value="Otro">Otro</option>
+      </select>
+
       <select id="area" required>
-        <option value="">--Selecciona--</option>
+        <option value="">-- Área que reporta --</option>
         <option value="Administración">Administración</option>
         <option value="Enfermería">Enfermería</option>
         <option value="Laboratorio">Laboratorio</option>
@@ -25,22 +35,7 @@
         <option value="Otro">Otro</option>
       </select>
 
-      <label>No. de Extensión del área:</label>
-      <input type="text" id="extension" placeholder="Ingresa el número de extensión">
-
-      <label>Falla / Duda que presenta el usuario:</label>
-      <select id="falla" required>
-        <option value="">--Selecciona--</option>
-        <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
-        <option value="Error en sistema">Error en sistema</option>
-        <option value="Problema con red">Problema con red</option>
-        <option value="Otro">Otro</option>
-      </select>
-
-      
-
-      <label>Comentario adicional:</label>
-      <textarea id="comentario" rows="3" placeholder="Escribe aquí comentarios adicionales"></textarea>
+      <textarea id="comentario" rows="3" placeholder="Comentario adicional"></textarea>
 
       <!-- Botón que abre WhatsApp -->
       <a id="whatsappBtn" href="#" target="_blank" class="button-link">Enviar a WhatsApp</a>
