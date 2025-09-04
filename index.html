@@ -2,94 +2,147 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SOPORTE TI UPAEP</title>
   <style>
+    * { box-sizing: border-box; margin:0; padding:0; }
     body {
       font-family: Arial, sans-serif;
-      margin: 40px;
-      background: #f7f7f7;
+      background-color: #f4f0f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background-color: #fff;
+      width: 100%;
+      max-width: 480px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      border-top: 6px solid #5b2e91;
     }
     h2 {
-      color: #b10000;
       text-align: center;
+      color: #5b2e91;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #4a148c;
     }
     label {
       display: block;
-      margin-top: 15px;
       font-weight: bold;
+      margin-top: 15px;
+      margin-bottom: 5px;
+      color: #5b2e91;
     }
-    input, textarea, select, button {
+    input, select, textarea, button {
       width: 100%;
-      padding: 10px;
-      margin-top: 5px;
+      padding: 12px;
+      margin-bottom: 10px;
       border-radius: 8px;
       border: 1px solid #ccc;
+      font-size: 14px;
     }
     button {
-      background-color: #b10000;
-      color: white;
-      font-size: 16px;
+      background-color: #5b2e91;
+      color: #fff;
+      font-weight: bold;
       cursor: pointer;
-      margin-top: 20px;
+      transition: background-color 0.3s;
     }
     button:hover {
-      background-color: #8c0000;
+      background-color: #4a148c;
+    }
+    @media (max-width: 500px) {
+      body { padding: 10px; }
+      .container { padding: 15px; }
+      input, select, textarea, button { font-size: 13px; }
     }
   </style>
 </head>
 <body>
-  <h2>📌 SOPORTE TI UPAEP</h2>
-  <p>¿En qué te podemos apoyar el día de hoy? Llena la siguiente información:</p>
+  <div class="container">
+    <h2>📌 SOPORTE TI UPAEP</h2>
+    <p>¿En qué te podemos apoyar hoy? Llena la siguiente información:</p>
 
-  <form id="soporteForm">
-    <label>Nombre del usuario / Usuario de red:</label>
-    <input type="text" id="nombre" required>
+    <form id="soporteForm">
+      <label>Nombre del usuario / Usuario de red:</label>
+      <input type="text" id="nombre" required placeholder="Ingresa tu nombre">
 
-    <label>Falla / Duda que presenta el usuario:</label>
-    <select id="falla" required>
-      <option value="">-- Selecciona una opción --</option>
-      <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
-      <option value="Error en sistema">Error en sistema</option>
-      <option value="Problema con red">Problema con red</option>
-      <option value="Otro">Otro</option>
-    </select>
+      <label>Falla / Duda que presenta el usuario:</label>
+      <select id="falla" required>
+        <option value="">-- Selecciona una opción --</option>
+        <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
+        <option value="Error en sistema">Error en sistema</option>
+        <option value="Problema con red">Problema con red</option>
+        <option value="Otro">Otro</option>
+      </select>
 
-    <label>Área que reporta:</label>
-    <select id="area" required>
-      <option value="">-- Selecciona un área --</option>
-      <option value="Administración">Administración</option>
-      <option value="Enfermería">Enfermería</option>
-      <option value="Laboratorio">Laboratorio</option>
-      <option value="Médicos">Médicos</option>
-      <option value="Otro">Otro</option>
-    </select>
+      <label>Área que reporta:</label>
+      <select id="area" required>
+        <option value="">-- Selecciona un área --</option>
+        <option value="Administración">Administración</option>
+        <option value="Enfermería">Enfermería</option>
+        <option value="Laboratorio">Laboratorio</option>
+        <option value="Médicos">Médicos</option>
+        <option value="Otro">Otro</option>
+      </select>
 
-    <label>Comentario adicional:</label>
-    <textarea id="comentario" rows="3"></textarea>
+      <label>Comentario adicional:</label>
+      <textarea id="comentario" rows="3" placeholder="Escribe aquí comentarios adicionales"></textarea>
 
-    <button type="submit">Enviar a WhatsApp</button>
-  </form>
+      <button type="submit">Enviar a WhatsApp</button>
+    </form>
+  </div>
 
-  <script>
+  <!-- Script de EmailJS -->
+  <script type="text/javascript" src="https://cdn.emailjs.com/sdk/3.2/email.min.js"></script>
+  <script type="text/javascript">
+    // Inicializar EmailJS con tu Public Key
+    (function(){
+      emailjs.init("C5j47qKA17BwP7LyR");
+    })();
+
     document.getElementById("soporteForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
-      let numero = "522221208061"; // Número de WhatsApp
-      let nombre = document.getElementById("nombre").value;
-      let falla = document.getElementById("falla").value;
-      let area = document.getElementById("area").value;
-      let comentario = document.getElementById("comentario").value;
+      const nombre = document.getElementById("nombre").value;
+      const falla = document.getElementById("falla").value;
+      const area = document.getElementById("area").value;
+      const comentario = document.getElementById("comentario").value;
+      const numero = "522221208061"; // Número de WhatsApp
 
-      let mensaje = 
-        "SOPORTE TI UPAEP%0A%0A" +
-        "Nombre del usuario / Usuario de red: " + nombre + "%0A%0A" +
-        "Falla / Duda que presenta el usuario: " + falla + "%0A%0A" +
-        "Área que reporta: " + area + "%0A%0A" +
-        "Comentario adicional: " + comentario;
-
-      let url = "https://wa.me/" + numero + "?text=" + mensaje;
-
+      // 1️⃣ Abrir WhatsApp con mensaje
+      const mensaje = encodeURIComponent(
+        `SOPORTE TI UPAEP\n\n` +
+        `Nombre del usuario / Usuario de red: ${nombre}\n\n` +
+        `Falla / Duda que presenta el usuario: ${falla}\n\n` +
+        `Área que reporta: ${area}\n\n` +
+        `Comentario adicional: ${comentario}`
+      );
+      const url = `https://wa.me/${numero}?text=${mensaje}`;
       window.open(url, "_blank");
+
+      // 2️⃣ Enviar correo con EmailJS
+      emailjs.send("service_85tg48p", "template_jx2nt6o", {
+        nombre: nombre,
+        falla: falla,
+        area: area,
+        comentario: comentario,
+        to_email: "diana.velazquez@christus.mx"
+      })
+      .then(function(response){
+         console.log("Correo enviado con éxito!", response.status, response.text);
+      }, function(error){
+         console.log("Error al enviar correo...", error);
+      });
     });
   </script>
 </body>
