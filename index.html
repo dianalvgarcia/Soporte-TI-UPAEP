@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>SOPORTE TI UPAEP</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f7f7f7;
+    }
+    h2 {
+      color: #b10000;
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input, textarea, select, button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #b10000;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+    button:hover {
+      background-color: #8c0000;
+    }
+  </style>
+</head>
+<body>
+  <h2>📌 SOPORTE TI UPAEP</h2>
+  <p>¿En qué te podemos apoyar el día de hoy? Llena la siguiente información:</p>
+
+  <form id="soporteForm">
+    <label>Nombre del usuario / Usuario de red:</label>
+    <input type="text" id="nombre" required>
+
+    <label>Falla / Duda que presenta el usuario:</label>
+    <select id="falla" required>
+      <option value="">-- Selecciona una opción --</option>
+      <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
+      <option value="Error en sistema">Error en sistema</option>
+      <option value="Problema con red">Problema con red</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label>Área que reporta:</label>
+    <select id="area" required>
+      <option value="">-- Selecciona un área --</option>
+      <option value="Administración">Administración</option>
+      <option value="Enfermería">Enfermería</option>
+      <option value="Laboratorio">Laboratorio</option>
+      <option value="Médicos">Médicos</option>
+      <option value="Otro">Otro</option>
+    </select>
+
+    <label>Comentario adicional:</label>
+    <textarea id="comentario" rows="3"></textarea>
+
+    <button type="submit">Enviar a WhatsApp</button>
+  </form>
+
+  <script>
+    document.getElementById("soporteForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      let numero = "522221208061"; // Número de WhatsApp
+      let nombre = document.getElementById("nombre").value;
+      let falla = document.getElementById("falla").value;
+      let area = document.getElementById("area").value;
+      let comentario = document.getElementById("comentario").value;
+
+      let mensaje = 
+        "SOPORTE TI UPAEP%0A%0A" +
+        "Nombre del usuario / Usuario de red: " + nombre + "%0A%0A" +
+        "Falla / Duda que presenta el usuario: " + falla + "%0A%0A" +
+        "Área que reporta: " + area + "%0A%0A" +
+        "Comentario adicional: " + comentario;
+
+      let url = "https://wa.me/" + numero + "?text=" + mensaje;
+
+      window.open(url, "_blank");
+    });
+  </script>
+</body>
+</html>
