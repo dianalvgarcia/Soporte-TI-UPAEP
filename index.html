@@ -3,26 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SOPORTE TI UPAEP</title>
+  <title>SOPORTE TI PUEBLA</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
-    <h2>📌 SOPORTE TI UPAEP</h2>
+    <h2>📌 SOPORTE TI PUEBLA</h2>
     <p>¿En qué te podemos apoyar hoy? Llena la siguiente información:</p>
 
     <form id="soporteForm">
       <label>Nombre del usuario / Usuario de red:</label>
       <input type="text" id="nombre" required placeholder="Ingresa tu nombre">
-
-      <label>Falla / Duda que presenta el usuario:</label>
-      <select id="falla" required>
-        <option value="">--Selecciona--</option>
-        <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
-        <option value="Error en sistema">Error en sistema</option>
-        <option value="Problema con red">Problema con red</option>
-        <option value="Otro">Otro</option>
-      </select>
 
       <label>Área que reporta:</label>
       <select id="area" required>
@@ -33,6 +24,20 @@
         <option value="Médicos">Médicos</option>
         <option value="Otro">Otro</option>
       </select>
+
+      <label>No. de Extensión del área:</label>
+      <input type="text" id="extension" placeholder="Ingresa el número de extensión">
+
+      <label>Falla / Duda que presenta el usuario:</label>
+      <select id="falla" required>
+        <option value="">--Selecciona--</option>
+        <option value="No puedo acceder a mi cuenta">No puedo acceder a mi cuenta</option>
+        <option value="Error en sistema">Error en sistema</option>
+        <option value="Problema con red">Problema con red</option>
+        <option value="Otro">Otro</option>
+      </select>
+
+      
 
       <label>Comentario adicional:</label>
       <textarea id="comentario" rows="3" placeholder="Escribe aquí comentarios adicionales"></textarea>
@@ -47,6 +52,7 @@
 
     whatsappBtn.addEventListener("click", function(e) {
       const nombre = document.getElementById("nombre").value;
+      const extension = document.getElementById("extension").value;
       const falla = document.getElementById("falla").value;
       const area = document.getElementById("area").value;
       const comentario = document.getElementById("comentario").value;
@@ -57,11 +63,11 @@
         return;
       }
 
-      // Número de WhatsApp (México +52)
-      const numero = "522221208061";
-      const mensaje = `SOPORTE TI UPAEP\n\nNombre: ${nombre}\nFalla: ${falla}\nÁrea: ${area}\nComentario: ${comentario}`;
+      const numero = "522221208061"; // México +52
+      let mensaje = `SOPORTE TI PUEBLA\n\nNombre: ${nombre}`;
+      if(extension) mensaje += `\nExtensión: ${extension}`;
+      mensaje += `\nFalla: ${falla}\nÁrea: ${area}\nComentario: ${comentario}`;
 
-      // Generar enlace de WhatsApp
       whatsappBtn.href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     });
   </script>
