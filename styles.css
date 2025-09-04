@@ -1,0 +1,47 @@
+/* styles.css */
+body {
+  font-family: Arial;
+  padding: 20px;
+  background-color: #f4f0f8;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  border-top: 6px solid #5b2e91;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+input, select, textarea, button {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+button {
+  background-color: #5b2e91;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #4a148c;
+}
+
+h2 {
+  color: #5b2e91;
+  text-align: center;
+}
+
+p {
+  text-align: center;
+  color: #4a148c;
+  font-size: 14px;
+}
